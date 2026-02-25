@@ -1,0 +1,32 @@
+<div class="filter-bar">
+
+    <!-- Sort Dropdown -->
+    <div class="filter-group">
+        <label for="sort-select">{{ 'FILTERS.SORT_BY' | translate }}</label>
+        <div class="select-wrapper">
+            <span class="icon">↕️</span>
+            <select id="sort-select" [ngModel]="state().sortBy" (ngModelChange)="onSortChange($event)">
+                <option value="date_asc">{{ 'FILTERS.DATE_ASC' | translate }}</option>
+                <option value="date_desc">{{ 'FILTERS.DATE_DESC' | translate }}</option>
+                <option value="size">{{ 'FILTERS.PARTICIPANTS' | translate }}</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Category Filter -->
+    <div class="filter-group">
+        <label for="category-select">{{ 'FILTERS.CATEGORY' | translate }}</label>
+        <div class="select-wrapper">
+            <span class="icon">📁</span>
+            <select id="category-select" [ngModel]="state().category" (ngModelChange)="onCategoryChange($event)">
+                <option value="All">{{ 'FILTERS.ALL' | translate }}</option>
+                @for (cat of categories; track cat[0]) {
+                <option [value]="cat[1]">{{ 'CATEGORIES.' + cat[0] | translate }}</option>
+                }
+            </select>
+        </div>
+    </div>
+
+
+
+</div>

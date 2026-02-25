@@ -1,0 +1,46 @@
+<div class="activities-page">
+
+    <div class="list-column">
+        <div class="list-sticky-header">
+
+            <div class="search-bar-wrapper">
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" [placeholder]="'FILTERS.SEARCH_PLACEHOLDER' | translate"
+                        [(ngModel)]="searchQuery" (ngModelChange)="onSearch($event)" id="activity-search"
+                        aria-label="Search activities">
+                    @if (searchQuery) {
+                    <button class="clear-btn" (click)="clearSearch()" aria-label="Clear search">✕</button>
+                    }
+                </div>
+            </div>
+
+            <app-filter-bar (filterChange)="onFilterChange($event)" />
+        </div>
+
+        @if (filteredActivities().length > 0) {
+        <div class="activity-list">
+            @for (activity of filteredActivities(); track activity.id) {
+            <app-activity-card [activity]="activity" (cardClick)="onActivityClick($event)" />
+            }
+        </div>
+        } @else {
+        <div class="empty-state">
+            @if (searchQuery) {
+            <div class="empty-icon">🔍</div>
+            <h3>No activities found</h3>
+            <p>Try a different search or create a new activity!</p>
+            <button class="btn-create" (click)="clearSearch()">Clear search</button>
+            } @else {
+            <div class="empty-icon">🎉</div>
+            <h3>No activities yet</h3>
+            <p>Be the first! Create an activity and invite people to join you.</p>
+            <button class="btn-create" (click)="dialog.open()">+ Create first activity</button>
+            }
+        </div>
+        }
+    </div>
+
+    <app-activity-sidebar [activities]="filteredActivities()" [joinedCount]="joinedCount()" />
+
+</div>

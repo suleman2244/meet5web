@@ -1,0 +1,34 @@
+<div class="activity-card" [class.is-joined]="activity().isJoined" (click)="onCardClick()">
+
+
+    <div class="avatar-grid" [style.--cols]="gridCols()">
+        @for (slot of slots(); track $index) {
+        @if (slot.user) {
+        <div class="slot filled">
+            <img [src]="slot.user.avatarUrl" [alt]="slot.user.name">
+            <div class="checkmark">✓</div>
+        </div>
+        } @else {
+        <div class="slot empty">
+            <span class="plus">+</span>
+        </div>
+        }
+        }
+    </div>
+
+
+    <div class="card-info">
+        <h3 class="title">{{ (getCategoryKey(activity().title) ? ('CATEGORIES.' + getCategoryKey(activity().title)) :
+            activity().title) | translate }}</h3>
+
+        <div class="meta-row">
+            <span class="meta-icon">📍</span>
+            <span class="meta-text">{{ activity().location.address }}</span>
+        </div>
+
+        <div class="meta-row">
+            <span class="meta-icon">📅</span>
+            <span class="meta-text">{{ activity().date | date:'EEEE, MMMM d, y' }}</span>
+        </div>
+    </div>
+</div>

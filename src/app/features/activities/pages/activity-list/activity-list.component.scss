@@ -1,0 +1,174 @@
+@use 'styles/variables' as var;
+@use 'styles/mixins' as mix;
+
+.activities-page {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 32px;
+    align-items: start;
+    animation: fadeIn 0.4s ease-out;
+
+    @media (max-width: 1000px) {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    @include mix.mobile {
+        grid-template-areas:
+            "sidebar"
+            "content";
+        gap: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.list-column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+
+    @include mix.mobile {
+        grid-area: content;
+    }
+}
+
+.list-sticky-header {
+    background: var.$background;
+    z-index: 10;
+    padding: 12px 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: -16px;
+
+    @include mix.mobile {
+        padding: 8px 0 12px;
+        margin-top: -8px;
+        gap: 8px;
+    }
+}
+
+.search-bar-wrapper {
+    padding: 0;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    padding: 10px 18px;
+    box-shadow: inset 0 1px 2px var(--shadow-color);
+    transition: background 0.2s ease;
+
+    &:focus-within {
+        background: var(--surface);
+        border-color: var.$primary;
+    }
+
+    .search-icon {
+        font-size: 1rem;
+        flex-shrink: 0;
+        opacity: 0.5;
+    }
+
+    input {
+        flex: 1;
+        border: none;
+        outline: none;
+        font-size: 0.95rem;
+        color: var.$text-main;
+        background: transparent;
+        font-family: inherit;
+
+        &::placeholder {
+            color: #999;
+        }
+    }
+
+    .clear-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #aaa;
+        font-size: 0.85rem;
+        padding: 2px;
+        display: flex;
+        align-items: center;
+
+        &:hover {
+            color: var.$text-main;
+        }
+    }
+}
+
+.list-header {
+    .page-title {
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: var.$text-main;
+        margin: 0;
+    }
+}
+
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    text-align: center;
+    color: var.$text-secondary;
+
+    .empty-icon {
+        font-size: 3rem;
+        margin-bottom: 16px;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+        color: var.$text-main;
+        margin-bottom: 8px;
+    }
+
+    p {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+    }
+
+    .btn-create {
+        background: var.$primary;
+        color: #fff;
+        border: none;
+        padding: 10px 24px;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: opacity 0.2s;
+
+        &:hover {
+            opacity: 0.85;
+        }
+    }
+}

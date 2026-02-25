@@ -1,0 +1,66 @@
+// src/styles/_variables.scss
+
+// Brand Colors — Meet5 inspired premium palette
+$primary: #FF6B6B; // Coral red (Meet5 accent)
+$primary-light: #FF8787;
+$primary-dark: #E55555;
+
+$secondary: #4ECDC4; // Teal accent
+$secondary-dark: #45B7AF;
+
+$accent: #FFE66D; // Warning/Highlight yellow
+
+// Neutral Colors
+$white: #FFFFFF;
+$black: #1A1A1A;
+$grey-50: #F8F9FA;
+$grey-100: #F1F3F5;
+$grey-200: #E9ECEF;
+$grey-300: #DEE2E6;
+$grey-400: #CED4DA;
+$grey-500: #ADB5BD;
+$grey-600: #868E96;
+$grey-700: #495057;
+$grey-800: #343A40;
+$grey-900: #212529;
+
+// Functional Colors
+$background: var(--background);
+$surface: var(--surface);
+$text-main: var(--text-main);
+$text-secondary: var(--text-secondary);
+$text-muted: var(--text-muted);
+$error: #FA5252;
+$success: #40C057;
+
+// Spacing scale (8px base)
+$space-2xs: 4px;
+$space-xs: 8px;
+$space-sm: 12px;
+$space-md: 16px;
+$space-lg: 24px;
+$space-xl: 32px;
+$space-2xl: 48px;
+$space-3xl: 64px;
+
+// Breakpoints
+$breakpoint-mobile: 768px;
+$breakpoint-tablet: 1024px;
+$breakpoint-desktop: 1280px;
+
+// Elevation / Shadows
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.08), 0 6px 6px rgba(0, 0, 0, 0.1);
+$shadow-xl: 0 15px 35px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.05);
+
+// Border Radius
+$radius-sm: 6px;
+$radius-md: 10px;
+$radius-lg: 16px;
+$radius-xl: 24px;
+$radius-full: 9999px;
+
+// Transitions
+$transition-base: all 0.2s ease-in-out;
+$transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);

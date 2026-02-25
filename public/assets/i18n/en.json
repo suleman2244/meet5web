@@ -1,0 +1,91 @@
+{
+    "NAV": {
+        "ACTIVITIES": "Activities",
+        "FOR_YOU": "For You",
+        "MEMBERS": "Members",
+        "CHAT": "Chat",
+        "PROFILE": "Profile"
+    },
+    "TOPBAR": {
+        "NEAR_YOU": "Activities near {{city}}",
+        "CREATE": "Create activity",
+        "THEME_LIGHT": "Switch to Light Mode",
+        "THEME_DARK": "Switch to Dark Mode"
+    },
+    "STATS": {
+        "YOUR_ACTIVITY": "Your Activity",
+        "JOINED": "Joined",
+        "AVAILABLE": "Available",
+        "INSIGHTS": "Insights"
+    },
+    "FILTERS": {
+        "SEARCH_PLACEHOLDER": "Search activities...",
+        "SORT_BY": "Sort by",
+        "CATEGORY": "Category",
+        "ALL": "All",
+        "DATE_ASC": "Date (Soonest)",
+        "DATE_DESC": "Date (Latest)",
+        "PARTICIPANTS": "Participants"
+    },
+    "CATEGORIES": {
+        "OUTDOOR": "Outdoor",
+        "FOOD_DRINK": "Food & Drink",
+        "SPORTS": "Sports",
+        "ARTS_CULTURE": "Arts & Culture",
+        "SOCIAL": "Social",
+        "NIGHTLIFE": "Nightlife",
+        "GAMES": "Games",
+        "COFFEE_BREAKFAST": "Coffee & Breakfast",
+        "SIGHTSEEING": "Sightseeing",
+        "MUSIC_CONCERTS": "Music & Concerts",
+        "MOVIES_CINEMA": "Movies & Cinema",
+        "WELLNESS_SPA": "Wellness & Spa",
+        "SHOPPING": "Shopping",
+        "EDUCATION": "Education",
+        "VOLUNTEERING": "Volunteering"
+    },
+    "DIALOG": {
+        "TITLE": "Create activity",
+        "SIZE": "Size",
+        "CATEGORY": "Category",
+        "DESCRIPTION": "Add a description",
+        "DESC_PLACEHOLDER": "Example: Let's meet for casual conversation over coffee to get to know each other... 😊☕",
+        "DATE": "Date",
+        "TIME": "Time",
+        "LOCATION": "Select location",
+        "LOC_PLACEHOLDER": "Find any location in your city",
+        "LOC_HINT": "Choose a location where you'd like the activity to take place.",
+        "LOC_DETECTING": "📡 Detecting your location…",
+        "ERR_GEO_FAILED": "⚠️ Could not detect location. Type to search manually.",
+        "ERR_REQUIRED": "Required.",
+        "ERR_PAST": "Cannot create an activity in the past.",
+        "ERR_LOC": "Location is required.",
+        "INVITE_ONLY": "With invite only",
+        "INVITE_DESC": "Only members you invite or approve will be able to join.",
+        "MEN_ONLY": "For men only",
+        "AGE_RANGE": "Add suggested age range",
+        "AGE_DESC": "Select how wide the age range of other participants should be.",
+        "CANCEL": "Cancel",
+        "SUBMIT": "Create activity now"
+    },
+    "DETAIL": {
+        "BACK": "Back",
+        "BACK_TO_LIST": "Back to Activities",
+        "TITLE": "Activity details",
+        "ANYONE": "Anyone can join",
+        "INVITE_ONLY": "Invite only",
+        "JOIN": "Join",
+        "LEAVE": "Leave",
+        "FULL": "Full",
+        "DESCRIPTION": "Description",
+        "ORGANIZER": "Organizer",
+        "LOCATION_HEADER": "Activity location",
+        "TIME_HEADER": "Time and location",
+        "SPOTS_TAKEN": "{{taken}}/{{max}} spots taken",
+        "NOT_FOUND": "Activity not found."
+    },
+    "SIDEBAR": {
+        "APP_PROMO": "The app makes everything even easier. Download it now!",
+        "LOGOUT": "Logout"
+    }
+}

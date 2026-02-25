@@ -1,0 +1,106 @@
+@if (activity(); as a) {
+
+<div class="page-header">
+    <div class="header-left">
+        <a routerLink="/activities" class="back-link">← {{ 'DETAIL.BACK' | translate }}</a>
+        <h1 class="header-title">{{ 'DETAIL.TITLE' | translate }}</h1>
+    </div>
+    <div class="header-actions">
+        @if (!a.isJoined && !a.isFull) {
+        <button class="btn-join" (click)="join()">+ {{ 'DETAIL.JOIN' | translate }}</button>
+        } @else if (a.isJoined) {
+        <button class="btn-leave" (click)="leave()">{{ 'DETAIL.LEAVE' | translate }}</button>
+        } @else {
+        <button class="btn-full" disabled>{{ 'DETAIL.FULL' | translate }}</button>
+        }
+        <button class="btn-star" [class.active]="false" aria-label="Save">★</button>
+    </div>
+</div>
+
+
+<div class="detail-grid">
+
+
+    <div class="detail-left">
+
+
+        <h2 class="detail-title">{{ (getCategoryKey(a.title) ? ('CATEGORIES.' + getCategoryKey(a.title)) : a.title) |
+            translate }}</h2>
+        <p class="detail-subtitle">
+            {{ (a.isInviteOnly ? 'DETAIL.INVITE_ONLY' : 'DETAIL.ANYONE') | translate }}
+        </p>
+
+        <div class="avatar-grid" [attr.data-cols]="gridCols(a.maxParticipants)">
+            @for (p of a.participants; track p.id) {
+            <div class="avatar-slot filled">
+                <img [src]="p.avatarUrl" [alt]="p.name">
+                <span class="check">✓</span>
+            </div>
+            }
+            @for (empty of emptySlots(a); track empty) {
+            <div class="avatar-slot empty"><span class="plus">+</span></div>
+            }
+        </div>
+
+
+        @if (a.description) {
+        <section class="detail-section">
+            <h3>{{ 'DETAIL.DESCRIPTION' | translate }}</h3>
+            <p>{{ a.description }}</p>
+        </section>
+        }
+
+        <!-- Organizer -->
+        <section class="detail-section organizer-section">
+            <h3>{{ 'DETAIL.ORGANIZER' | translate }}</h3>
+            <div class="organizer-card">
+                <img [src]="a.organizer.avatarUrl" [alt]="a.organizer.name" class="org-avatar">
+                <span class="org-name">{{ a.organizer.name }}</span>
+                @if (a.organizer.isVerified) { <span class="org-badge">❤️</span> }
+            </div>
+        </section>
+    </div>
+
+    <aside class="detail-right">
+
+
+        <div class="map-card">
+            <h3>{{ 'DETAIL.LOCATION_HEADER' | translate }}</h3>
+            @if (a.lat && a.lon) {
+            <iframe class="map-embed" loading="lazy" [src]="mapUrl(a.lat, a.lon)" frameborder="0" scrolling="no"
+                title="Activity location map">
+            </iframe>
+            } @else {
+            <div class="map-placeholder">
+                <span>📍</span>
+                <p>{{ a.location.address }}</p>
+            </div>
+            }
+        </div>
+
+
+        <div class="info-card">
+            <h3>{{ 'DETAIL.TIME_HEADER' | translate }}</h3>
+            <div class="info-row">
+                <span class="info-icon clock">🕐</span>
+                <span>{{ a.date | date:'EEEE, MMM d, y, h:mm a' }}</span>
+            </div>
+            <div class="info-row">
+                <span class="info-icon pin">📍</span>
+                <span>{{ a.location.address || a.location.name }}</span>
+            </div>
+            <div class="info-row">
+                <span class="info-icon people">👥</span>
+                <span>{{ 'DETAIL.SPOTS_TAKEN' | translate:{ taken: a.currentParticipants, max: a.maxParticipants }
+                    }}</span>
+            </div>
+        </div>
+    </aside>
+</div>
+
+} @else {
+<div class="not-found">
+    <p>{{ 'DETAIL.NOT_FOUND' | translate }}</p>
+    <a routerLink="/activities">← {{ 'DETAIL.BACK_TO_LIST' | translate }}</a>
+</div>
+}

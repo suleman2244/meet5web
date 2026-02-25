@@ -1,0 +1,86 @@
+<div class="create-container">
+    <div class="header">
+        <button class="back-btn" routerLink="/activities">←</button>
+        <h1>Create activity</h1>
+    </div>
+
+    <form [formGroup]="activityForm" (ngSubmit)="onSubmit()" class="create-form">
+
+        <div class="form-section">
+            <label for="size">Size <span class="required">*</span></label>
+            <div class="select-wrapper">
+                <select id="size" formControlName="size">
+                    @for (s of sizes; track s) {
+                    <option [value]="s">{{ s }}</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+
+        <div class="form-section">
+            <label for="title">Enter title <span class="required">*</span></label>
+            <input type="text" id="title" formControlName="title" placeholder="Enter a title for your activity">
+            <p class="help-text">You should give the activity a descriptive title such as "Hiking," "Wine Evening," or
+                "Nice Dinner with Friends."</p>
+        </div>
+
+
+        <div class="form-section">
+            <label for="description">Add a description</label>
+            <textarea id="description" formControlName="description" rows="4"
+                placeholder="Example: Let's meet for casual conversation over coffee to get to know each other and find common interests..."></textarea>
+        </div>
+
+
+        <div class="form-section">
+            <label for="location">Select location <span class="required">*</span></label>
+            <div class="input-icon-wrapper">
+                <input type="text" id="location" formControlName="location"
+                    placeholder="Find any location in your city">
+            </div>
+            <p class="help-text">Choose a location where you'd like the activity to take place.</p>
+        </div>
+
+
+        <div class="toggle-card">
+            <div class="toggle-info">
+                <h3>With invite only</h3>
+                <p>If you enable this feature, only members you invite or approve will be able to join your activity.
+                </p>
+            </div>
+            <label class="switch">
+                <input type="checkbox" formControlName="isInviteOnly">
+                <span class="slider round"></span>
+            </label>
+        </div>
+
+        <div class="toggle-card">
+            <div class="toggle-info">
+                <h3>For men only</h3>
+            </div>
+            <label class="switch">
+                <input type="checkbox" formControlName="isMenOnly">
+                <span class="slider round"></span>
+            </label>
+        </div>
+
+        <div class="toggle-card">
+            <div class="toggle-info">
+                <h3>Add suggested age range</h3>
+                <p>Select how wide the age range of the other participants should be. This will be displayed as a note
+                    in your activity.</p>
+            </div>
+            <label class="switch">
+                <input type="checkbox" formControlName="ageRange">
+                <span class="slider round"></span>
+            </label>
+        </div>
+
+        <!-- Actions -->
+        <div class="form-actions">
+            <button type="button" class="btn-cancel" routerLink="/activities">Cancel</button>
+            <button type="submit" class="btn-submit" [disabled]="activityForm.invalid">Create activity now</button>
+        </div>
+    </form>
+</div>

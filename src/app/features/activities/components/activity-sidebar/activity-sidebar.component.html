@@ -1,0 +1,34 @@
+<div class="right-sidebar">
+    <div class="upgrade-card">
+        <div class="upgrade-icon">⭐</div>
+        <h3>Upgrade to Premium</h3>
+        <p>Exciting activities and even more connections — explore Premium benefits to enjoy an even richer Meet5
+            experience.</p>
+        <button class="upgrade-btn">Upgrade to Premium</button>
+    </div>
+
+    <div class="stats-card">
+        <h4>{{ 'STATS.YOUR_ACTIVITY' | translate }}</h4>
+        <div class="stat-item">
+            <span class="stat-num">{{ joinedCount() }}</span>
+            <span class="stat-label">{{ 'STATS.JOINED' | translate }}</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-num">{{ activities().length }}</span>
+            <span class="stat-label">{{ 'STATS.AVAILABLE' | translate }}</span>
+        </div>
+    </div>
+
+    @if (activities().length > 0) {
+    <div class="activity-insights">
+        <div class="insights-header">
+            <h4>{{ 'STATS.INSIGHTS' | translate }}</h4>
+            <span class="count">{{ activities().length }}</span>
+        </div>
+        <div class="chart-wrapper">
+            <canvas baseChart [data]="chartData()" [options]="chartOptions" [type]="chartType">
+            </canvas>
+        </div>
+    </div>
+    }
+</div>

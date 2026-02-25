@@ -1,0 +1,91 @@
+{
+    "NAV": {
+        "ACTIVITIES": "Aktivitäten",
+        "FOR_YOU": "Für dich",
+        "MEMBERS": "Mitglieder",
+        "CHAT": "Chat",
+        "PROFILE": "Profil"
+    },
+    "TOPBAR": {
+        "NEAR_YOU": "Aktivitäten in der Nähe von {{city}}",
+        "CREATE": "Aktivität erstellen",
+        "THEME_LIGHT": "Zum hellen Modus wechseln",
+        "THEME_DARK": "Zum dunklen Modus wechseln"
+    },
+    "STATS": {
+        "YOUR_ACTIVITY": "Deine Aktivität",
+        "JOINED": "Beigetreten",
+        "AVAILABLE": "Verfügbar",
+        "INSIGHTS": "Einblicke"
+    },
+    "FILTERS": {
+        "SEARCH_PLACEHOLDER": "Aktivitäten suchen...",
+        "SORT_BY": "Sortieren nach",
+        "CATEGORY": "Kategorie",
+        "ALL": "Alle",
+        "DATE_ASC": "Datum (Zuerst)",
+        "DATE_DESC": "Datum (Zuletzt)",
+        "PARTICIPANTS": "Teilnehmer"
+    },
+    "CATEGORIES": {
+        "OUTDOOR": "Outdoor",
+        "FOOD_DRINK": "Essen & Trinken",
+        "SPORTS": "Sport",
+        "ARTS_CULTURE": "Kunst & Kultur",
+        "SOCIAL": "Soziales",
+        "NIGHTLIFE": "Nachtleben",
+        "GAMES": "Spiele",
+        "COFFEE_BREAKFAST": "Kaffee & Frühstück",
+        "SIGHTSEEING": "Besichtigungen",
+        "MUSIC_CONCERTS": "Musik & Konzerte",
+        "MOVIES_CINEMA": "Filme & Kino",
+        "WELLNESS_SPA": "Wellness & Spa",
+        "SHOPPING": "Shopping",
+        "EDUCATION": "Bildung",
+        "VOLUNTEERING": "Ehrenamt"
+    },
+    "DIALOG": {
+        "TITLE": "Aktivität erstellen",
+        "SIZE": "Größe",
+        "CATEGORY": "Kategorie",
+        "DESCRIPTION": "Beschreibung hinzufügen",
+        "DESC_PLACEHOLDER": "Beispiel: Lass uns auf einen Kaffee treffen...",
+        "DATE": "Datum",
+        "TIME": "Uhrzeit",
+        "LOCATION": "Ort wählen",
+        "LOC_PLACEHOLDER": "Finde einen Ort in deiner Stadt",
+        "LOC_HINT": "Wähle einen Ort, an dem die Aktivität stattfinden soll.",
+        "LOC_DETECTING": "📡 Standorterkennung läuft…",
+        "ERR_GEO_FAILED": "⚠️ Standort konnte nicht erkannt werden. Suche manuell.",
+        "ERR_REQUIRED": "Erforderlich.",
+        "ERR_PAST": "Aktivitäten in der Vergangenheit sind nicht möglich.",
+        "ERR_LOC": "Ort ist erforderlich.",
+        "INVITE_ONLY": "Nur mit Einladung",
+        "INVITE_DESC": "Nur Mitglieder, die du einlädst oder bestätigst, können teilnehmen.",
+        "MEN_ONLY": "Nur für Männer",
+        "AGE_RANGE": "Altersbereich hinzufügen",
+        "AGE_DESC": "Wähle aus, wie groß der Altersbereich der Teilnehmer sein soll.",
+        "CANCEL": "Abbrechen",
+        "SUBMIT": "Aktivität jetzt erstellen"
+    },
+    "DETAIL": {
+        "BACK": "Zurück",
+        "BACK_TO_LIST": "Zurück zu Aktivitäten",
+        "TITLE": "Aktivitätsdetails",
+        "ANYONE": "Jeder kann teilnehmen",
+        "INVITE_ONLY": "Nur mit Einladung",
+        "JOIN": "Teilnehmen",
+        "LEAVE": "Verlassen",
+        "FULL": "Voll",
+        "DESCRIPTION": "Beschreibung",
+        "ORGANIZER": "Organisator",
+        "LOCATION_HEADER": "Aktivitätsort",
+        "TIME_HEADER": "Zeit und Ort",
+        "SPOTS_TAKEN": "{{taken}}/{{max}} Plätze besetzt",
+        "NOT_FOUND": "Aktivität nicht gefunden."
+    },
+    "SIDEBAR": {
+        "APP_PROMO": "Die App macht alles noch einfacher. Jetzt herunterladen!",
+        "LOGOUT": "Abmelden"
+    }
+}

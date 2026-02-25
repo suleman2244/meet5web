@@ -1,0 +1,44 @@
+<!-- src/app/layout/sidebar/sidebar.component.html -->
+<div class="sidebar">
+
+    <!-- Logo -->
+    <div class="logo">
+        <span class="logo-icon">M5</span>
+        <span class="logo-text">meet<strong>5</strong></span>
+        <span class="beta-pill">beta</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-menu">
+        @for (item of navItems; track item.path) {
+        <a [routerLink]="item.path" routerLinkActive="active" class="nav-item" [attr.title]="item.label | translate">
+            <span class="icon">{{ item.icon }}</span>
+            <span class="label">{{ item.label | translate }}</span>
+        </a>
+        }
+    </nav>
+
+    <!-- App Store Links -->
+    <div class="app-store-section">
+        <p class="app-store-text">{{ 'SIDEBAR.APP_PROMO' | translate }}</p>
+        <div class="store-badges">
+            <a href="https://apps.apple.com/cz/app/meet5-meet-new-people/id1222980795" target="_blank"
+                class="store-badge">
+                <span>🍎</span> App Store
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=co.gocrush&hl=en" target="_blank"
+                class="store-badge">
+                <span>▶</span> Google Play
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="sidebar-footer">
+
+        <a href="#" class="nav-item logout-item">
+            <span class="icon">🚪</span>
+            <span class="label">{{ 'SIDEBAR.LOGOUT' | translate }}</span>
+        </a>
+    </div>
+</div>
