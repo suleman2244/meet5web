@@ -1,92 +1,77 @@
 # Meet5 Web — Angular Frontend Challenge
 
-A high-fidelity, responsive web recreation of the **Meet5** mobile application, optimized for **desktop and iPad**. Built with **Angular 21** and modern reactive patterns (Signals, RxJS Interop), this project demonstrates senior-level code quality, modular architecture, and a premium UI/UX.
+A responsive web version of the **Meet5** mobile app, built with **Angular 21**. Works great on desktop, tablet, and mobile.
 
-> **Live Preview:** Run locally with `npm start` → [http://localhost:4200](http://localhost:4200)
+> **Run it locally:** `npm start` → [http://localhost:4200](http://localhost:4200)
 
 ---
 
 ## 📋 Table of Contents
 
 1. [Quick Start](#-quick-start)
-2. [Core Implementation](#-core-implementation-required-features)
+2. [Core Features](#-core-features)
 3. [Bonus Features](#-bonus-features)
-4. [Architecture & Technical Decisions](#-architecture--technical-decisions)
-5. [Internationalization (i18n)](#-internationalization-i18n)
-6. [Theming (Dark / Light Mode)](#-theming-dark--light-mode)
-7. [Data Persistence (LocalStorage)](#-data-persistence-localstorage)
-8. [Location & Geolocation](#-location--geolocation)
+4. [Architecture](#-architecture)
+5. [Translations (i18n)](#-translations-i18n)
+6. [Dark / Light Mode](#-dark--light-mode)
+7. [Data Storage](#-data-storage)
+8. [Location Features](#-location-features)
 9. [Project Structure](#-project-structure)
 10. [Scripts](#-available-scripts)
+11. [Tech Stack](#-tech-stack)
 
 ---
 
 ## 🚀 Quick Start
 
-### Prerequisites
-
-| Tool     | Version       |
-|----------|---------------|
-| Node.js  | **v18+**      |
-| npm      | **v9+**       |
-
-### Installation
+**You need:** Node.js v18+ and npm v9+
 
 ```bash
-# 1. Clone the repository
-git clone https://github.com/<your-username>/meet5-web.git
+# Clone and run
+git clone https://github.com/suleman2244/meet5web.git
 cd meet5-web
-
-# 2. Install dependencies
 npm install
-
-# 3. Start the development server
 npm start
 ```
 
-The app will be available at **http://localhost:4200**.
+Open **http://localhost:4200** in your browser.
 
-### Production Build
+To create a production build:
 
 ```bash
 npm run build
-# Output → dist/meet5-web
+# Output goes to dist/meet5-web
 ```
 
 ---
 
-## ✅ Core Implementation (Required Features)
+## ✅ Core Features
 
 ### Navigation
 
-A fixed **left sidebar** provides access to all five menu items:
+A fixed sidebar lets you navigate through the app:
 
-| Menu Item    | Status          |
-|-------------|-----------------|
-| Activities   | ✅ Fully implemented |
-| For Me       | 🔗 Placeholder page |
-| Discover     | 🔗 Placeholder page |
-| Chats        | 🔗 Placeholder page |
-| Profile      | 🔗 Placeholder page |
+| Menu Item    | Status               |
+|-------------|----------------------|
+| Activities   | ✅ Fully working     |
+| For Me       | 🔗 Placeholder       |
+| Discover     | 🔗 Placeholder       |
+| Chats        | 🔗 Placeholder       |
+| Profile      | 🔗 Placeholder       |
 
-- **Desktop:** Full sidebar with labels, app store links, and logout
-- **Tablet (≤ 1024px):** Collapsed sidebar with icons only
-- **Mobile (≤ 768px):** Bottom tab navigation bar (iOS-style)
+The sidebar adapts to screen size:
+- **Desktop:** Full sidebar with labels and links
+- **Tablet (≤ 1024px):** Icons only
+- **Mobile (≤ 768px):** Bottom tab bar
 
 ### Activities Page
 
-The main page features a responsive grid layout with:
+The main page shows a grid of activity cards. You can:
 
-- **Search Bar** — Real-time text filtering across activity titles
-- **Filter Bar** — Sort by date/size + category dropdown filter
-- **Activity Cards** — Rich cards showing:
-  - Title (translated by category)
-  - Date and time
-  - Location (city + venue name)
-  - Participant count (e.g. "5 of 10 joined")
-  - Dynamic avatar grid matching `maxParticipants`
-  - Join status indicator
-- **Sidebar Panel** — Upgrade card, stats summary, and a Chart.js doughnut chart with real-time category insights
+- **Search** activities by title in real time
+- **Filter** by category or sort by date/size
+- **View activity cards** showing title, date, location, participant count, avatar grid, and join status
+- **See insights** in a sidebar panel with stats and a doughnut chart
 
 ---
 
@@ -94,134 +79,128 @@ The main page features a responsive grid layout with:
 
 ### Activity Detail Page
 
-A dedicated detail view accessible by clicking any activity card:
+Click any activity card to see its full details:
 
-- High-resolution header image
-- Full description with metadata
-- Dynamic avatar grid showing joined participants and empty slots
-- **Interactive OpenStreetMap** embed (iframe) centered on activity coordinates
-- **Join / Leave** button with state synchronization across the entire app
+- Large header image
+- Full description and metadata
+- Avatar grid showing who joined and empty spots
+- Interactive **OpenStreetMap** centered on the activity location
+- **Join / Leave** button that stays in sync across the app
 
 ### Create Activity Dialog
 
-A modal dialog for creating new activities:
+A popup form to create new activities:
 
-- Form validation (title, location, size required)
-- Category selection from enum values
-- Toggle switches (Invite Only, Men Only)
-- Real-time preview of the created activity
+- Validates required fields (title, location, size)
+- Pick a category from the list
+- Toggle options like "Invite Only" and "Men Only"
+- Live preview of the activity you're creating
 
-### Activity Insights Chart
+### Insights Chart
 
-A reactive **Chart.js doughnut chart** in the sidebar that:
+A **Chart.js doughnut chart** in the sidebar that:
 
-- Visualizes activity distribution by category
-- Updates **in real-time** when search/filter changes
-- Translates legend labels to the current language dynamically using Angular Signals + RxJS Interop
+- Shows how activities are split by category
+- Updates live as you search or filter
+- Translates labels when you switch languages
 
 ---
 
-## 🏗 Architecture & Technical Decisions
+## 🏗 Architecture
 
-### Why Angular 21 with Signals?
+### Angular 21 with Signals
 
-I chose the latest Angular version to leverage the **Signals API**, which provides:
+The app uses Angular's **Signals API** for reactive state management:
 
-- **Fine-grained reactivity** without Zone.js overhead
-- **Computed properties** that automatically recalculate when dependencies change
-- **Signal Inputs** (`input.required<T>()`) for type-safe, reactive component communication
-- **RxJS Interop** (`toSignal`) to bridge Observable-based services with Signal-based templates
+- **Signals** track state changes efficiently without Zone.js
+- **Computed signals** auto-update when their data changes
+- **Signal Inputs** make component communication type-safe
+- **RxJS Interop** connects Observable services to Signal-based templates
 
 ### Standalone Components
 
-Every component uses `standalone: true` — no NgModules. This results in:
+Every component is standalone (no NgModules). This means:
 
-- **Smaller bundles** through tree-shaking
-- **Explicit dependency declarations** in each component's `imports` array
-- **Lazy-loaded routes** for Activities pages (list, detail, create)
+- Smaller bundle sizes thanks to tree-shaking
+- Each component lists its own dependencies
+- Routes are lazy-loaded for better performance
 
-### Service Layer Architecture
+### Services
 
-All data flows through injectable services that abstract storage from components:
+All data flows through injectable services:
 
-| Service               | Responsibility                                      |
-|-----------------------|-----------------------------------------------------|
-| `ActivityService`     | CRUD operations, join/leave logic, signal-based state |
-| `StorageService`      | Generic `localStorage` wrapper with JSON serialization |
-| `ThemeService`        | Dark/light theme toggle with system preference detection |
-| `GeolocationService`  | Browser Geolocation API wrapper with loading/error signals |
-| `LocationSearchService` | Nominatim reverse geocoding + location-biased search |
-| `DialogService`       | Global modal dialog state management |
-| `MockDataService`     | Seed data generator for initial activity population |
+| Service                 | What it does                                |
+|------------------------|---------------------------------------------|
+| `ActivityService`       | Manages activities (create, join, leave)     |
+| `StorageService`        | Reads/writes to localStorage                |
+| `ThemeService`          | Handles dark/light mode switching            |
+| `GeolocationService`    | Gets the user's GPS location                |
+| `LocationSearchService` | Looks up city names and searches locations   |
+| `DialogService`         | Controls modal popups                        |
+| `MockDataService`       | Generates sample activities on first load    |
 
-### SCSS Design System
+### Styling
 
-Instead of utility-first CSS, I implemented a **custom SCSS design system** with:
+The app uses a custom **SCSS design system**:
 
-- `_variables.scss` — Color palette, spacing scale, breakpoints, shadows, radii
-- `_mixins.scss` — Responsive breakpoint mixins (`@include mix.mobile`, `@include mix.tablet`)
-- `_typography.scss` — Font stack definitions (Inter, system fonts)
-- **CSS Custom Properties** (`--surface`, `--text-main`, etc.) for runtime theme switching
+- `_variables.scss` — Colors, spacing, breakpoints, shadows
+- `_mixins.scss` — Responsive helpers (`@include mix.mobile`, `@include mix.tablet`)
+- `_typography.scss` — Font setup (Inter + system fonts)
+- **CSS Variables** (`--surface`, `--text-main`, etc.) enable theme switching at runtime
 
 ---
 
-## 🌍 Internationalization (i18n)
+## 🌍 Translations (i18n)
 
-### Library: `@ngx-translate/core` + `@ngx-translate/http-loader`
-
-I chose **ngx-translate** over Angular's built-in i18n because it supports **runtime language switching** without rebuilding the application — critical for a seamless user experience.
+Uses **ngx-translate** so you can switch languages without reloading the page.
 
 ### Supported Languages
 
-| Language | File                        |
-|----------|-----------------------------|
-| 🇺🇸 English  | `public/assets/i18n/en.json` |
-| 🇩🇪 German   | `public/assets/i18n/de.json` |
-| 🇫🇷 French   | `public/assets/i18n/fr.json` |
+| Language     | File                          |
+|-------------|-------------------------------|
+| 🇺🇸 English  | `public/assets/i18n/en.json`  |
+| 🇩🇪 German   | `public/assets/i18n/de.json`  |
+| 🇫🇷 French   | `public/assets/i18n/fr.json`  |
 
 ### How It Works
 
-1. **Translation files** are loaded via HTTP at runtime using `TranslateHttpLoader`
-2. **Templates** use the `| translate` pipe for reactive translations
-3. **Chart labels** use a reactive stream (`toSignal` + `switchMap`) to ensure canvas-based labels update without page refresh
-4. **Language preference** is persisted in `localStorage` (`app-lang` key) and restored on reload
-5. **Language selector** in the top bar allows instant switching between all three languages
+- Translation files load automatically at startup
+- Templates use the `| translate` pipe to show the right text
+- Chart labels also update when you change the language
+- Your language choice is saved in localStorage and restored on reload
+- A language picker in the top bar lets you switch instantly
 
 ### Adding a New Language
 
 ```bash
-# 1. Create a new translation file
+# 1. Copy an existing file
 cp public/assets/i18n/en.json public/assets/i18n/es.json
 
 # 2. Translate the values in es.json
 
-# 3. Register the language in top-bar.component.ts
-#    Add: <option value="es">🇪🇸 ES</option>
+# 3. Add the option in top-bar.component.ts
+#    <option value="es">🇪🇸 ES</option>
 ```
 
 ---
 
-## 🎨 Theming (Dark / Light Mode)
+## 🎨 Dark / Light Mode
 
-### Implementation: `ThemeService` + CSS Custom Properties
+The theme system works with **CSS variables** and needs no extra libraries:
 
-The theme system is built with **zero external dependencies**:
-
-1. **`ThemeService`** uses an Angular `signal<Theme>` to hold the current theme
-2. An `effect()` automatically syncs the theme to:
-   - `document.body.classList` (adds/removes `dark-theme`)
-   - `localStorage` (key: `meet5-theme`)
-3. **CSS Custom Properties** defined in `styles.scss` change based on the body class:
+1. `ThemeService` stores the current theme in a signal
+2. When the theme changes, it updates the `body` class and saves to localStorage
+3. CSS variables switch colors based on the body class:
 
 ```scss
-// Light theme (default)
+// Light (default)
 :root {
     --background: #F8F9FA;
     --surface: #FFFFFF;
     --text-main: #1A1A1A;
 }
 
-// Dark theme
+// Dark
 body.dark-theme {
     --background: #1A1A1A;
     --surface: #2D2D2D;
@@ -229,70 +208,53 @@ body.dark-theme {
 }
 ```
 
-4. **System preference detection**: On first visit, the app checks `prefers-color-scheme: dark` and auto-applies the matching theme
-5. **Toggle button** (🌙 / ☀️) in the top bar instantly switches themes
+4. On first visit, it checks your system preference and picks the matching theme
+5. A toggle button (🌙 / ☀️) in the top bar lets you switch manually
 
 ---
 
-## 💾 Data Persistence (LocalStorage)
+## 💾 Data Storage
 
-### Why LocalStorage?
+Since this is a frontend-only demo (no backend), everything is saved in **localStorage**:
 
-For a client-side demo application without a backend, `localStorage` provides:
-
-- **Zero setup** — No database, no API server
-- **Persistence across sessions** — Activities, theme, and language survive page refreshes
-- **Easy migration path** — The `StorageService` abstraction means switching to HTTP/API requires changing only the service implementation
-
-### What Gets Persisted
-
-| Key                | Data                          | Service           |
+| Key                | What it stores                | Used by           |
 |--------------------|-------------------------------|-------------------|
-| `meet5_activities` | Full activity array (JSON)    | `ActivityService` |
-| `meet5-theme`      | `"light"` or `"dark"`         | `ThemeService`    |
+| `meet5_activities` | All activities (as JSON)      | `ActivityService` |
+| `meet5-theme`      | `"light"` or `"dark"`        | `ThemeService`    |
 | `app-lang`         | `"en"`, `"de"`, or `"fr"`    | `TopBarComponent` |
 
-### Architecture
+Data flows like this:
 
 ```
 Component → ActivityService → StorageService → localStorage
                 ↓
-           signal<Activity[]>  ← (reactive updates to all consumers)
+           signal<Activity[]>  ← (all components get updates)
 ```
 
-The `StorageService` is a generic typed wrapper:
-
-```typescript
-setItem<T>(key: string, value: T): void    // JSON.stringify + save
-getItem<T>(key: string): T | null          // Parse + return
-removeItem(key: string): void
-clear(): void
-```
+The `StorageService` is a simple wrapper around localStorage that handles JSON parsing automatically.
 
 ---
 
-## 📍 Location & Geolocation
+## 📍 Location Features
 
-### Fetching User Location: `GeolocationService`
+### Getting Your Location
 
-Uses the **Browser Geolocation API** (`navigator.geolocation`) to:
+The `GeolocationService` asks for your GPS coordinates using the browser's built-in location API. It gives you:
+- Your coordinates
+- A loading state
+- An error state (if you deny permission)
 
-1. Request the user's GPS coordinates (with permission prompt)
-2. Expose reactive signals: `coords`, `loading`, `error`
-3. Configure high accuracy with a 10-second timeout
+### Looking Up City Names
 
-### Reverse Geocoding: `LocationSearchService`
-
-Uses **OpenStreetMap's Nominatim API** (free, no API key required) to:
-
-1. **Reverse geocode** coordinates → city name (for the "Activities near {city}" header)
-2. **Forward search** text queries → location results (for the Create Activity form)
-3. **Location-biased results** using a bounding box around the user's position
+The `LocationSearchService` uses **OpenStreetMap's Nominatim API** (free, no API key needed) to:
+- Convert your coordinates into a city name (shown in the header)
+- Search for locations by text (used in the Create Activity form)
+- Prioritize results near your current location
 
 ```
-User GPS → GeolocationService → LocationSearchService → Nominatim API
+Your GPS → GeolocationService → LocationSearchService → Nominatim API
                                         ↓
-                                 currentCity signal → TopBar header
+                                 City name → shown in the top bar
 ```
 
 ---
@@ -300,80 +262,66 @@ User GPS → GeolocationService → LocationSearchService → Nominatim API
 ## 📂 Project Structure
 
 ```
-src/
-├── app/
-│   ├── core/                       # Singleton services & models
-│   │   ├── models/
-│   │   │   ├── activity.model.ts   # Activity interface + ActivityCategory enum
-│   │   │   └── user.model.ts       # User interface
-│   │   └── services/
-│   │       ├── activity.service.ts  # CRUD + join/leave + localStorage
-│   │       ├── storage.service.ts   # Generic localStorage wrapper
-│   │       ├── theme.service.ts     # Dark/light theme management
-│   │       ├── geolocation.service.ts    # Browser GPS
-│   │       ├── location-search.service.ts # Nominatim geocoding
-│   │       ├── dialog.service.ts    # Modal state management
-│   │       └── mock-data.service.ts # Seed data generator
-│   ├── features/
-│   │   └── activities/
-│   │       ├── components/          # Reusable feature components
-│   │       │   ├── activity-card/   # Individual card component
-│   │       │   ├── activity-sidebar/ # Stats + chart sidebar
-│   │       │   ├── filter-bar/      # Sort + category filter
-│   │       │   └── create-activity-dialog/ # Modal form
-│   │       └── pages/               # Routed page components
-│   │           ├── activity-list/   # Main activities page
-│   │           ├── activity-detail/ # Detail view with map
-│   │           └── create-activity/ # Standalone create page
-│   ├── layout/                      # App shell components
-│   │   ├── layout.component.ts      # Shell with sidebar + router outlet
-│   │   ├── sidebar/                 # Navigation sidebar
-│   │   └── top-bar/                 # Header with actions
-│   └── shared/                      # Cross-feature utilities
-├── styles/                          # Global SCSS design system
-│   ├── _variables.scss
-│   ├── _mixins.scss
-│   └── _typography.scss
-└── public/assets/i18n/              # Translation files
-    ├── en.json
-    ├── de.json
-    └── fr.json
+src/app/
+├── core/                        # Services and data models
+│   ├── models/
+│   │   ├── activity.model.ts    # Activity type + category enum
+│   │   └── user.model.ts        # User type
+│   └── services/
+│       ├── activity.service.ts  # Activity CRUD + join/leave
+│       ├── storage.service.ts   # localStorage wrapper
+│       ├── theme.service.ts     # Theme management
+│       ├── geolocation.service.ts
+│       ├── location-search.service.ts
+│       ├── dialog.service.ts
+│       └── mock-data.service.ts
+├── features/
+│   └── activities/
+│       ├── components/          # Reusable UI pieces
+│       │   ├── activity-card/
+│       │   ├── activity-sidebar/
+│       │   ├── filter-bar/
+│       │   └── create-activity-dialog/
+│       └── pages/               # Full pages (routed)
+│           ├── activity-list/
+│           ├── activity-detail/
+│           └── create-activity/
+├── layout/                      # App shell (sidebar, top bar)
+└── shared/                      # Shared utilities
 ```
 
 ---
 
 ## 📜 Available Scripts
 
-| Command         | Description                              |
-|-----------------|------------------------------------------|
-| `npm start`     | Start dev server at `localhost:4200`     |
-| `npm run build` | Production build → `dist/meet5-web`     |
-| `npm run watch` | Development build with file watching     |
-| `npm test`      | Run unit tests                           |
+| Command          | Description                          |
+|------------------|--------------------------------------|
+| `npm start`      | Start dev server at `localhost:4200` |
+| `npm run build`  | Production build → `dist/meet5-web`  |
+| `npm run watch`  | Dev build with auto-reload           |
+| `npm test`       | Run unit tests                       |
 
 ---
 
-## 🧰 Tech Stack Summary
+## 🧰 Tech Stack
 
-| Category         | Technology                                   |
-|------------------|----------------------------------------------|
-| Framework        | Angular 21 (Standalone Components + Signals) |
-| Language         | TypeScript 5.9                               |
-| Styling          | SCSS with CSS Custom Properties              |
-| State Management | Angular Signals + RxJS Interop               |
-| Charts           | Chart.js 4 + ng2-charts 8                    |
-| i18n             | @ngx-translate/core 17                       |
-| Maps             | OpenStreetMap (iframe embed)                  |
-| Geocoding        | Nominatim API (free, no key)                 |
-| Persistence      | localStorage via StorageService              |
-| Build Tool       | Angular CLI + esbuild                        |
+| Category       | Technology                              |
+|----------------|-----------------------------------------|
+| Framework      | Angular 21 (Standalone Components + Signals) |
+| Language       | TypeScript 5.9                          |
+| Styling        | SCSS + CSS Custom Properties            |
+| State          | Angular Signals + RxJS                  |
+| Charts         | Chart.js 4 + ng2-charts 8              |
+| Translations   | @ngx-translate/core 17                  |
+| Maps           | OpenStreetMap (iframe)                  |
+| Geocoding      | Nominatim API (free, no key)            |
+| Storage        | localStorage via StorageService         |
+| Build Tool     | Angular CLI + esbuild                   |
 
 ---
 
 ## 📝 Author
 
-**Sulaman** — Built as part of the Meet5 Web Development evaluation.
+**Sulaman** — Built for the Meet5 Web Development evaluation.
 
 > GitHub: [suleman2244/meet5web](https://github.com/suleman2244/meet5web)
-
-> This implementation prioritizes **code quality**, **user experience**, and **architectural clarity**. Every component is standalone, every service is injectable and testable, and the design system ensures visual consistency across all viewports.
